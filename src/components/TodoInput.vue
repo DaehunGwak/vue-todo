@@ -18,7 +18,14 @@ export default {
   },
   methods: {
     addTodo() {
-      localStorage.setItem(this.newTodoItem, this.newTodoItem);
+      if (!this.newTodoItem) {
+        return;
+      }
+      const newItemObj = {
+        completed: false,
+        item: this.newTodoItem,
+      };
+      localStorage.setItem(this.newTodoItem, JSON.stringify(newItemObj));
       this.clearInput();
       this.$emit('add');
     },
@@ -48,6 +55,7 @@ input:focus {
   background: inherit;
   border-style: none;
   width: calc(100% - 5rem);
+  font-size: 1rem;
 }
 
 .addContainer {

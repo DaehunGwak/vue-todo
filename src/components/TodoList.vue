@@ -2,7 +2,10 @@
   <section>
     <ul>
       <li v-for="(todoItem, index) in todoItems" v-bind:key="todoItem" class="shadow">
-        {{ todoItem }}
+        <span @click="toggleComplete(todoItem)" class="checkBtn">
+          <i class="fas fa-check" :class="{checkBtnCompleted: todoItem.completed}"></i>
+        </span>
+        <span :class="{textCompleted: todoItem.completed}">{{ todoItem.item }}</span>
         <span class="removeBtn" @click="removeTodo(todoItem, index)">
           <i class="fas fa-trash-alt"></i>
         </span>
@@ -20,7 +23,11 @@ export default {
   methods: {
     removeTodo(todoItem, index) {
       this.todoItems.splice(index, 1);
-      localStorage.removeItem(todoItem);
+      localStorage.removeItem(todoItem.item);
+    },
+    toggleComplete(todoItem) {
+      todoItem.completed = !todoItem.completed;
+      localStorage.setItem(todoItem.item, JSON.stringify(todoItem));
     },
   }
 }
@@ -48,9 +55,9 @@ li {
 }
 
 .checkBtn {
-  line-height: 45px;
+  line-height: 50px;
   color: #62acde;
-  margin-right: 5px;
+  margin-right: 10px;
   cursor: pointer;
 }
 

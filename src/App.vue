@@ -35,11 +35,12 @@ export default {
       this.todoItems = [];
       if (localStorage.length > 0) {
         for (let i = 0; i < localStorage.length; i++) {
-          const storageValue = localStorage.key(i);
-          if (storageValue.includes('webpack')) {
+          const key = localStorage.key(i);
+          if (key.includes('webpack')) {
             continue;
           }
-          this.todoItems.push(storageValue);
+          const obj = JSON.parse(localStorage.getItem(key));
+          this.todoItems.push(obj);
         }
       }
     },
@@ -61,6 +62,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 input {
+  font-family: Avenir, 'Nanum Gothic', Helvetica, Arial, sans-serif;
   border-style: solid;
   width: inherit;
 }

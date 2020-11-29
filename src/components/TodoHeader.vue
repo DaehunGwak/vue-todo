@@ -17,5 +17,6 @@ h1 {
   color: #ffffff;
   font-weight: 900;
   margin: 2.5rem 0 1.5rem;
+  text-shadow: 2px 5px 5px rgba(0, 0, 0, 0.4);
 }
 </style>
