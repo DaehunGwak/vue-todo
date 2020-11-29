@@ -1,5 +1,7 @@
 # vue-todo
 
+![image](https://user-images.githubusercontent.com/12469427/100546068-a3da1000-32a2-11eb-870e-fb5b6c9662f8.png)
+
 ## Vue.js 중급 강좌 - 웹앱 제작으로 배워보는 Vue.js, ES6, Vuex
 
 - [inflearn 강의 링크](https://www.inflearn.com/course/vue-pwa-vue-js-%EC%A4%91%EA%B8%89/)
