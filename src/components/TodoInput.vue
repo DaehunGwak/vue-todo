@@ -9,6 +9,8 @@
 </template>
 
 <script>
+import Constants from '../constants/index.js';
+
 export default {
   name: 'TodoInput',
   data() {
@@ -21,11 +23,12 @@ export default {
       if (!this.newTodoItem) {
         return;
       }
+      const key = `${Constants.KEY_PREFIX}${this.newTodoItem}`
       const newItemObj = {
         completed: false,
         item: this.newTodoItem,
       };
-      localStorage.setItem(this.newTodoItem, JSON.stringify(newItemObj));
+      localStorage.setItem(key, JSON.stringify(newItemObj));
       this.clearInput();
       this.$emit('add');
     },

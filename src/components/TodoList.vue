@@ -15,6 +15,8 @@
 </template>
 
 <script>
+import Constants from '../constants/index.js';
+
 export default {
   name: 'TodoList',
   props: {
@@ -22,12 +24,14 @@ export default {
   },
   methods: {
     removeTodo(todoItem, index) {
+      const key = `${Constants.KEY_PREFIX}${todoItem.item}`;
       this.todoItems.splice(index, 1);
-      localStorage.removeItem(todoItem.item);
+      localStorage.removeItem(key);
     },
     toggleComplete(todoItem) {
+      const key = `${Constants.KEY_PREFIX}${todoItem.item}`;
       todoItem.completed = !todoItem.completed;
-      localStorage.setItem(todoItem.item, JSON.stringify(todoItem));
+      localStorage.setItem(key, JSON.stringify(todoItem));
     },
   }
 }

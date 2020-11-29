@@ -12,6 +12,7 @@ import TodoHeader from './components/TodoHeader.vue';
 import TodoList from './components/TodoList.vue';
 import TodoInput from './components/TodoInput.vue';
 import TodoFooter from './components/TodoFooter.vue';
+import Constants from './constants/index.js';
 
 export default {
   name: 'App',
@@ -36,7 +37,7 @@ export default {
       if (localStorage.length > 0) {
         for (let i = 0; i < localStorage.length; i++) {
           const key = localStorage.key(i);
-          if (key.includes('webpack')) {
+          if (!key.includes(Constants.KEY_PREFIX)) {
             continue;
           }
           const obj = JSON.parse(localStorage.getItem(key));
@@ -45,7 +46,15 @@ export default {
       }
     },
     clearItems() {
-      localStorage.clear();
+      if (localStorage.length > 0) {
+        for (let i = 0; i < localStorage.length; i++) {
+          const key = localStorage.key(i);
+          if (!key.includes(Constants.KEY_PREFIX)) {
+            continue;
+          }
+          localStorage.removeItem(key);
+        }
+      }
       this.todoItems = [];
     }
   }
