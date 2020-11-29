@@ -1,8 +1,8 @@
 <template>
   <div id="app">
     <todo-header></todo-header>
-    <todo-input></todo-input>
-    <todo-list></todo-list>
+    <todo-input @add="loadTodoItems"></todo-input>
+    <todo-list :todoItems="todoItems"></todo-list>
     <todo-footer></todo-footer>
   </div>
 </template>
@@ -20,6 +20,29 @@ export default {
     TodoList,
     TodoInput,
     TodoFooter,
+  },
+  data() {
+    return {
+      todoItems: [],
+    };
+  },
+  created() {
+    this.loadTodoItems();
+  },
+  methods: {
+    loadTodoItems() {
+      console.log("load");
+      this.todoItems = [];
+      if (localStorage.length > 0) {
+        for (let i = 0; i < localStorage.length; i++) {
+          const storageValue = localStorage.key(i);
+          if (storageValue.includes('webpack')) {
+            continue;
+          }
+          this.todoItems.push(storageValue);
+        }
+      }
+    },
   }
 }
 </script>

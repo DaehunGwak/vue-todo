@@ -20,6 +20,7 @@ export default {
     addTodo() {
       localStorage.setItem(this.newTodoItem, this.newTodoItem);
       this.clearInput();
+      this.$emit('add');
     },
     clearInput() {
       this.newTodoItem = '';

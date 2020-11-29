@@ -14,27 +14,10 @@
 <script>
 export default {
   name: 'TodoList',
-  data() {
-    return {
-      todoItems: [],
-    };
-  },
-  created() {
-    this.loadTodoItems();
+  props: {
+    todoItems: Array,
   },
   methods: {
-    loadTodoItems() {
-      this.todoItems = [];
-      if (localStorage.length > 0) {
-        for (let i = 0; i < localStorage.length; i++) {
-          const storageValue = localStorage.key(i);
-          if (storageValue.includes('webpack')) {
-            continue;
-          }
-          this.todoItems.push(storageValue);
-        }
-      }
-    },
     removeTodo(todoItem, index) {
       this.todoItems.splice(index, 1);
       localStorage.removeItem(todoItem);
