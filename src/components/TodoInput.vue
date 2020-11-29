@@ -35,7 +35,7 @@ input:focus {
 
 .inputBox {
   display: inline-block;
-  background: white;
+  background: whitesmoke;
   height: 50px;
   line-height: 50px;
   width: 100%;
@@ -44,16 +44,17 @@ input:focus {
 }
 
 .inputBox input {
+  background: inherit;
   border-style: none;
-  width: calc(100% - 4rem);
+  width: calc(100% - 5rem);
 }
 
 .addContainer {
   float: right;
-  background: linear-gradient(to right, #6478FB, #8763FB);
+  background: linear-gradient(128deg, rgba(0,212,255,1) 22%, rgb(0, 110, 255) 72%, rgb(63, 63, 238) 100%);
   display: block;
   width: 3rem;
-  border-radius: 0 5px 5px 0;
+  border-radius: 0 4px 4px 0;
 }
 
 .addBtn {

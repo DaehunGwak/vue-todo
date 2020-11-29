@@ -1,6 +1,6 @@
 <template>
   <div>
-    footer
+    <h5>by <a href="https://github.com/daehungwak">daehun</a></h5>
   </div>
 </template>
 
@@ -10,6 +10,8 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+h5, a {
+  color: whitesmoke;
+}
 </style>
