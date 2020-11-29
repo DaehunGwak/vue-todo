@@ -55,6 +55,7 @@ input:focus {
   display: block;
   width: 3rem;
   border-radius: 0 4px 4px 0;
+  cursor: pointer
 }
 
 .addBtn {

@@ -1,9 +1,9 @@
 <template>
   <section>
     <ul>
-      <li v-for="todoItem in todoItems" v-bind:key="todoItem" class="shadow">
+      <li v-for="(todoItem, index) in todoItems" v-bind:key="todoItem" class="shadow">
         {{ todoItem }}
-        <span class="removeBtn" @click="removeTodo($event, todoItem)">
+        <span class="removeBtn" @click="removeTodo(todoItem, index)">
           <i class="fas fa-trash-alt"></i>
         </span>
       </li>
@@ -35,9 +35,9 @@ export default {
         }
       }
     },
-    removeTodo(event, todoItem) {
+    removeTodo(todoItem, index) {
+      this.todoItems.splice(index, 1);
       localStorage.removeItem(todoItem);
-      this.loadTodoItems();
     },
   }
 }
@@ -68,6 +68,7 @@ li {
   line-height: 45px;
   color: #62acde;
   margin-right: 5px;
+  cursor: pointer;
 }
 
 .checkBtnCompleted {
@@ -82,5 +83,6 @@ li {
 .removeBtn {
   margin-left: auto;
   color: #de4343;
+  cursor: pointer;
 }
 </style>
