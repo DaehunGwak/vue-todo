@@ -3,7 +3,7 @@
     <todo-header></todo-header>
     <todo-input @add="loadTodoItems"></todo-input>
     <todo-list :todoItems="todoItems"></todo-list>
-    <todo-footer></todo-footer>
+    <todo-footer @clearAll="clearItems"></todo-footer>
   </div>
 </template>
 
@@ -44,6 +44,10 @@ export default {
         }
       }
     },
+    clearItems() {
+      localStorage.clear();
+      this.todoItems = [];
+    }
   }
 }
 </script>
