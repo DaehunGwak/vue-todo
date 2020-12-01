@@ -2,7 +2,7 @@
   <section>
     <ul>
       <li v-for="(todoItem, index) in todoItems" v-bind:key="todoItem.item" class="shadow">
-        <span @click="toggleComplete(todoItem)" class="checkBtn">
+        <span @click="toggleComplete(todoItem, index)" class="checkBtn">
           <i class="fas fa-check" :class="{checkBtnCompleted: todoItem.completed}"></i>
         </span>
         <span :class="{textCompleted: todoItem.completed}">{{ todoItem.item }}</span>
@@ -15,8 +15,6 @@
 </template>
 
 <script>
-import { KEY_PREFIX } from '../constants/index.js';
-
 export default {
   name: 'TodoList',
   props: {
@@ -26,10 +24,8 @@ export default {
     removeTodo(todoItem, index) {
       this.$emit('removeItem', todoItem, index);
     },
-    toggleComplete(todoItem) {
-      const key = `${KEY_PREFIX}${todoItem.item}`;
-      todoItem.completed = !todoItem.completed;
-      localStorage.setItem(key, JSON.stringify(todoItem));
+    toggleComplete(todoItem, index) {
+      this.$emit('toggleItem', todoItem, index);
     },
   }
 }

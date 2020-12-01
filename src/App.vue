@@ -2,7 +2,11 @@
   <div id="app">
     <todo-header></todo-header>
     <todo-input @addTodoItem="addOneItem"></todo-input>
-    <todo-list :todoItems="todoItems" @removeItem="removeOneItem"></todo-list>
+    <todo-list
+      :todoItems="todoItems"
+      @removeItem="removeOneItem"
+      @toggleItem="toggleOneItme"
+    ></todo-list>
     <todo-footer @clearAll="clearItems"></todo-footer>
   </div>
 </template>
@@ -55,6 +59,11 @@ export default {
       const key = `${KEY_PREFIX}${todoItem.item}`;
       this.todoItems.splice(index, 1);
       localStorage.removeItem(key);
+    },
+    toggleOneItme(todoItem, index) {
+      const key = `${KEY_PREFIX}${todoItem.item}`;
+      this.todoItems[index].completed = !this.todoItems[index].completed;
+      localStorage.setItem(key, JSON.stringify(todoItem));
     },
     clearItems() {
       if (localStorage.length > 0) {
