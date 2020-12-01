@@ -2,7 +2,7 @@
   <div id="app">
     <todo-header></todo-header>
     <todo-input @addTodoItem="addOneItem"></todo-input>
-    <todo-list :todoItems="todoItems"></todo-list>
+    <todo-list :todoItems="todoItems" @removeItem="removeOneItem"></todo-list>
     <todo-footer @clearAll="clearItems"></todo-footer>
   </div>
 </template>
@@ -12,7 +12,7 @@ import TodoHeader from './components/TodoHeader.vue';
 import TodoList from './components/TodoList.vue';
 import TodoInput from './components/TodoInput.vue';
 import TodoFooter from './components/TodoFooter.vue';
-import Constants from './constants/index.js';
+import { KEY_PREFIX } from './constants/index.js';
 
 export default {
   name: 'App',
@@ -31,7 +31,7 @@ export default {
     if (localStorage.length > 0) {
       for (let i = 0; i < localStorage.length; i++) {
         const key = localStorage.key(i);
-        if (!key.includes(Constants.KEY_PREFIX)) {
+        if (!key.includes(KEY_PREFIX)) {
           continue;
         }
         const obj = JSON.parse(localStorage.getItem(key));
@@ -42,7 +42,7 @@ export default {
   },
   methods: {
     addOneItem(newTodoItem) {
-      const key = `${Constants.KEY_PREFIX}${newTodoItem}`
+      const key = `${KEY_PREFIX}${newTodoItem}`
       const newItemObj = {
         completed: false,
         item: newTodoItem,
@@ -51,11 +51,16 @@ export default {
       this.todoItems.push(newItemObj);
       this.sortItems();
     },
+    removeOneItem(todoItem, index) {
+      const key = `${KEY_PREFIX}${todoItem.item}`;
+      this.todoItems.splice(index, 1);
+      localStorage.removeItem(key);
+    },
     clearItems() {
       if (localStorage.length > 0) {
         for (let i = 0; i < localStorage.length; i++) {
           const key = localStorage.key(i);
-          if (!key.includes(Constants.KEY_PREFIX)) {
+          if (!key.includes(KEY_PREFIX)) {
             continue;
           }
           localStorage.removeItem(key);
