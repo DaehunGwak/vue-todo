@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <todo-header></todo-header>
-    <todo-input @add="loadTodoItems"></todo-input>
+    <todo-input @addTodoItem="addOneItem"></todo-input>
     <todo-list :todoItems="todoItems"></todo-list>
     <todo-footer @clearAll="clearItems"></todo-footer>
   </div>
@@ -28,22 +28,28 @@ export default {
     };
   },
   created() {
-    this.loadTodoItems();
+    if (localStorage.length > 0) {
+      for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        if (!key.includes(Constants.KEY_PREFIX)) {
+          continue;
+        }
+        const obj = JSON.parse(localStorage.getItem(key));
+        this.todoItems.push(obj);
+      }
+    }
+    this.sortItems();
   },
   methods: {
-    loadTodoItems() {
-      console.log("load");
-      this.todoItems = [];
-      if (localStorage.length > 0) {
-        for (let i = 0; i < localStorage.length; i++) {
-          const key = localStorage.key(i);
-          if (!key.includes(Constants.KEY_PREFIX)) {
-            continue;
-          }
-          const obj = JSON.parse(localStorage.getItem(key));
-          this.todoItems.push(obj);
-        }
-      }
+    addOneItem(newTodoItem) {
+      const key = `${Constants.KEY_PREFIX}${newTodoItem}`
+      const newItemObj = {
+        completed: false,
+        item: newTodoItem,
+      };
+      localStorage.setItem(key, JSON.stringify(newItemObj));
+      this.todoItems.push(newItemObj);
+      this.sortItems();
     },
     clearItems() {
       if (localStorage.length > 0) {
@@ -56,6 +62,9 @@ export default {
         }
       }
       this.todoItems = [];
+    },
+    sortItems() {
+      this.todoItems.sort((a, b) => a.item.localeCompare(b.item));
     }
   }
 }
