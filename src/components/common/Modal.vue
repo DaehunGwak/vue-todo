@@ -4,6 +4,8 @@
       <div class="modal-wrapper">
         <div class="modal-container">
 
+          <i class="fas fa-times closeModalBtn" @click="$emit('close')"></i>
+          
           <div class="modal-header">
             <slot name="header">
               default header
@@ -65,10 +67,11 @@ export default {
   box-shadow: 0 2px 8px rgba(0, 0, 0, .66);
   transition: all .3s ease;
   font-family: Helvetica, Arial, sans-serif;
+  position: relative;
 }
 
 .modal-header h3 {
-  margin-top: 0;
+  margin-top: 5px;
   color: #42b983;
 }
 
@@ -101,5 +104,14 @@ export default {
 .modal-leave-active .modal-container {
   -webkit-transform: scale(1.1);
   transform: scale(1.1);
+}
+
+.closeModalBtn {
+  color: #42b983;
+  position: absolute;
+  padding: 10px 11px;
+  right: 10px;
+  top: 10px;
+  cursor: pointer;
 }
 </style>

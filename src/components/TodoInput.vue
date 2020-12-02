@@ -5,10 +5,9 @@
       <i class="fas fa-plus addBtn"></i>
     </span>
     
-    <modal v-if="showModal">
+    <modal v-if="showModal" @close="showModal = false">
       <h3 slot="header">
         ⚠️ 경고 ⚠️
-        <i class="fas fa-times closeModalBtn" @click="showModal = false"></i>
       </h3>
       <div slot="body">빈상태로 입력하시면... 😅</div>
       <span slot="footer"></span>
@@ -80,10 +79,5 @@ input:focus {
 .addBtn {
   color: white;
   vertical-align: middle;
-}
-
-.closeModalBtn {
-  color: #42b983;
-  float: right;
 }
 </style>
