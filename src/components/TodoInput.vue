@@ -5,20 +5,35 @@
       <i class="fas fa-plus addBtn"></i>
     </span>
     
+    <modal v-if="showModal">
+      <h3 slot="header">
+        ⚠️ 경고 ⚠️
+        <i class="fas fa-times closeModalBtn" @click="showModal = false"></i>
+      </h3>
+      <div slot="body">빈상태로 입력하시면... 😅</div>
+      <span slot="footer"></span>
+    </modal>
   </div>
 </template>
 
 <script>
+import Modal from "./common/Modal.vue";
+
 export default {
   name: 'TodoInput',
+  components: {
+    Modal,
+  },
   data() {
     return {
       newTodoItem: '',
+      showModal: false,
     };
   },
   methods: {
     addTodo() {
       if (!this.newTodoItem) {
+        this.showModal = true;
         return;
       }
       this.$emit('addTodoItem', this.newTodoItem);
@@ -27,7 +42,7 @@ export default {
     clearInput() {
       this.newTodoItem = '';
     },
-  }
+  },
 }
 </script>
 
@@ -65,5 +80,10 @@ input:focus {
 .addBtn {
   color: white;
   vertical-align: middle;
+}
+
+.closeModalBtn {
+  color: #42b983;
+  float: right;
 }
 </style>

@@ -98,7 +98,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 input {
-  font-family: Avenir, 'Nanum Gothic', Helvetica, Arial, sans-serif;
+  font-family: 'Nanum Gothic';
   border-style: solid;
   width: inherit;
 }
