@@ -9,3 +9,4 @@
 - [04. Todo App - 사용자 경험 개선](./04-improve-ux.md)
 - [05. 중간 정리](./05-wrap-up.md)
 - [06. ES6 for Vue.js - 오리엔테이션](./06-es6-orientation.md)
+- [07. ES6 for Vue.js - const & let](./07-es6-const-let.md)
