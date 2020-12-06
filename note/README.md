@@ -10,3 +10,6 @@
 - [05. 중간 정리](./05-wrap-up.md)
 - [06. ES6 for Vue.js - 오리엔테이션](./06-es6-orientation.md)
 - [07. ES6 for Vue.js - const & let](./07-es6-const-let.md)
+- [08. ES6 for Vue.js - 화살표 함수](./08-es6-arrow-function.md)
+- [09. ES6 for Vue.js - Enhanced Object Literals](./09-es6-enhanced-object-literals.md)
+- [10. ES6 for Vue.js - Modules](./10-es6-modules.md)
