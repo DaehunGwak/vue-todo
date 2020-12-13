@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <todo-header></todo-header>
-    <todo-input @addTodoItem="addOneItem"></todo-input>
+    <todo-input></todo-input>
     <todo-list
       :todoItems="todoItems"
       @removeItem="removeOneItem"
@@ -32,16 +32,6 @@ export default {
     };
   },
   methods: {
-    addOneItem(newTodoItem) {
-      const key = `${KEY_PREFIX}${newTodoItem}`
-      const newItemObj = {
-        completed: false,
-        item: newTodoItem,
-      };
-      localStorage.setItem(key, JSON.stringify(newItemObj));
-      this.todoItems.push(newItemObj);
-      this.sortItems();
-    },
     removeOneItem(todoItem, index) {
       const key = `${KEY_PREFIX}${todoItem.item}`;
       this.todoItems.splice(index, 1);
