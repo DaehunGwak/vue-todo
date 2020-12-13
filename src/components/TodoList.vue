@@ -2,7 +2,7 @@
   
   <section>
     <transition-group name="list" tag="ul">
-      <li v-for="(todoItem, index) in todoItems" v-bind:key="todoItem.item" class="shadow">
+      <li v-for="(todoItem, index) in this.$store.state.todoItems" v-bind:key="todoItem.item" class="shadow">
         <span @click="toggleComplete(todoItem, index)" class="checkBtn">
           <i class="fas fa-check" :class="{checkBtnCompleted: todoItem.completed}"></i>
         </span>
@@ -18,9 +18,6 @@
 <script>
 export default {
   name: 'TodoList',
-  props: {
-    todoItems: Array,
-  },
   methods: {
     removeTodo(todoItem, index) {
       this.$emit('removeItem', todoItem, index);

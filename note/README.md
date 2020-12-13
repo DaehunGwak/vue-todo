@@ -14,4 +14,4 @@
 - [09. ES6 for Vue.js - Enhanced Object Literals](./09-es6-enhanced-object-literals.md)
 - [10. ES6 for Vue.js - Modules](./10-es6-modules.md)
 - [11. Vuex - 소개](./11-vuex-intro.md)
-  
+- [12. Vuex 기술 요소](./12-vuex-technical-elements.md)

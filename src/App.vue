@@ -31,19 +31,6 @@ export default {
       todoItems: [],
     };
   },
-  created() {
-    if (localStorage.length > 0) {
-      for (let i = 0; i < localStorage.length; i++) {
-        const key = localStorage.key(i);
-        if (!key.includes(KEY_PREFIX)) {
-          continue;
-        }
-        const obj = JSON.parse(localStorage.getItem(key));
-        this.todoItems.push(obj);
-      }
-    }
-    this.sortItems();
-  },
   methods: {
     addOneItem(newTodoItem) {
       const key = `${KEY_PREFIX}${newTodoItem}`
