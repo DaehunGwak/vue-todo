@@ -2,12 +2,8 @@
   <div id="app">
     <todo-header></todo-header>
     <todo-input></todo-input>
-    <todo-list
-      :todoItems="todoItems"
-      @removeItem="removeOneItem"
-      @toggleItem="toggleOneItme"
-    ></todo-list>
-    <todo-footer @clearAll="clearItems"></todo-footer>
+    <todo-list></todo-list>
+    <todo-footer></todo-footer>
   </div>
 </template>
 
@@ -16,7 +12,6 @@ import TodoHeader from './components/TodoHeader.vue';
 import TodoList from './components/TodoList.vue';
 import TodoInput from './components/TodoInput.vue';
 import TodoFooter from './components/TodoFooter.vue';
-import { KEY_PREFIX } from './constants/index.js';
 
 export default {
   name: 'App',
@@ -26,38 +21,6 @@ export default {
     TodoInput,
     TodoFooter,
   },
-  data() {
-    return {
-      todoItems: [],
-    };
-  },
-  methods: {
-    removeOneItem(todoItem, index) {
-      const key = `${KEY_PREFIX}${todoItem.item}`;
-      this.todoItems.splice(index, 1);
-      localStorage.removeItem(key);
-    },
-    toggleOneItme(todoItem, index) {
-      const key = `${KEY_PREFIX}${todoItem.item}`;
-      this.todoItems[index].completed = !this.todoItems[index].completed;
-      localStorage.setItem(key, JSON.stringify(todoItem));
-    },
-    clearItems() {
-      if (localStorage.length > 0) {
-        for (let i = 0; i < localStorage.length; i++) {
-          const key = localStorage.key(i);
-          if (!key.includes(KEY_PREFIX)) {
-            continue;
-          }
-          localStorage.removeItem(key);
-        }
-      }
-      this.todoItems = [];
-    },
-    sortItems() {
-      this.todoItems.sort((a, b) => a.item.localeCompare(b.item));
-    }
-  }
 }
 </script>
 
