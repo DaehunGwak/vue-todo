@@ -13,3 +13,5 @@
 - [08. ES6 for Vue.js - 화살표 함수](./08-es6-arrow-function.md)
 - [09. ES6 for Vue.js - Enhanced Object Literals](./09-es6-enhanced-object-literals.md)
 - [10. ES6 for Vue.js - Modules](./10-es6-modules.md)
+- [11. Vuex - 소개](./11-vuex-intro.md)
+  
