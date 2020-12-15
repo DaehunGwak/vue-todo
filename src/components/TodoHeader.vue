@@ -8,8 +8,8 @@
 <script>
 // js script
 export default {
-  name: 'TodoHeader',
-}
+  name: "TodoHeader"
+};
 </script>
 
 <style scoped>

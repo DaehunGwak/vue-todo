@@ -1,10 +1,10 @@
 <template>
   <div class="inputBox shadow">
-    <input type="text" v-model="newTodoItem" @keypress.enter="addTodo">
+    <input type="text" v-model="newTodoItem" @keypress.enter="addTodo" />
     <span class="addContainer" @click="addTodo">
       <i class="fas fa-plus addBtn"></i>
     </span>
-    
+
     <modal v-if="showModal" @close="showModal = false">
       <h3 slot="header">
         ⚠️ 경고 ⚠️
@@ -19,14 +19,14 @@
 import Modal from "./common/Modal.vue";
 
 export default {
-  name: 'TodoInput',
+  name: "TodoInput",
   components: {
-    Modal,
+    Modal
   },
   data() {
     return {
-      newTodoItem: '',
-      showModal: false,
+      newTodoItem: "",
+      showModal: false
     };
   },
   methods: {
@@ -35,14 +35,14 @@ export default {
         this.showModal = true;
         return;
       }
-      this.$store.commit('addOneItem', this.newTodoItem);
+      this.$store.commit("addOneItem", this.newTodoItem);
       this.clearInput();
     },
     clearInput() {
-      this.newTodoItem = '';
-    },
-  },
-}
+      this.newTodoItem = "";
+    }
+  }
+};
 </script>
 
 <style scoped>
@@ -69,11 +69,16 @@ input:focus {
 
 .addContainer {
   float: right;
-  background: linear-gradient(128deg, rgba(0,212,255,1) 22%, rgb(0, 110, 255) 72%, rgb(63, 63, 238) 100%);
+  background: linear-gradient(
+    128deg,
+    rgba(0, 212, 255, 1) 22%,
+    rgb(0, 110, 255) 72%,
+    rgb(63, 63, 238) 100%
+  );
   display: block;
   width: 3rem;
   border-radius: 0 4px 4px 0;
-  cursor: pointer
+  cursor: pointer;
 }
 
 .addBtn {

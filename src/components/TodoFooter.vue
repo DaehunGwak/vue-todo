@@ -9,17 +9,18 @@
 
 <script>
 export default {
-  name: 'TodoFooter',
+  name: "TodoFooter",
   methods: {
     clearAll() {
-      this.$store.commit('clearItems');
+      this.$store.commit("clearItems");
     }
   }
-}
+};
 </script>
 
 <style scoped>
-h5, a {
+h5,
+a {
   margin-top: 40px;
   color: whitesmoke;
 }
@@ -28,7 +29,12 @@ h5, a {
   width: 7rem;
   height: 45px;
   line-height: 47px;
-  background: linear-gradient(332deg, rgba(49,89,218,1) 5%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);
+  background: linear-gradient(
+    332deg,
+    rgba(49, 89, 218, 1) 5%,
+    rgba(253, 29, 29, 1) 50%,
+    rgba(252, 176, 69, 1) 100%
+  );
   border-radius: 10px;
   margin: 0 auto;
   cursor: pointer;
