@@ -1,12 +1,20 @@
 <template>
-  
   <section>
     <transition-group name="list" tag="ul">
-      <li v-for="(todoItem, index) in this.getTodoItems" v-bind:key="todoItem.item" class="shadow">
+      <li
+        v-for="(todoItem, index) in this.getTodoItems"
+        v-bind:key="todoItem.item"
+        class="shadow"
+      >
         <span @click="toggleComplete(todoItem, index)" class="checkBtn">
-          <i class="fas fa-check" :class="{checkBtnCompleted: todoItem.completed}"></i>
+          <i
+            class="fas fa-check"
+            :class="{ checkBtnCompleted: todoItem.completed }"
+          ></i>
         </span>
-        <span :class="{textCompleted: todoItem.completed}">{{ todoItem.item }}</span>
+        <span :class="{ textCompleted: todoItem.completed }">{{
+          todoItem.item
+        }}</span>
         <span class="removeBtn" @click="removeTodo(todoItem, index)">
           <i class="fas fa-trash-alt"></i>
         </span>
@@ -19,19 +27,19 @@
 import { mapGetters } from "vuex";
 
 export default {
-  name: 'TodoList',
-  computed() {
-    ...mapGetters(['getTodoItems'])
+  name: "TodoList",
+  computed: {
+    ...mapGetters(["getTodoItems"])
   },
   methods: {
     removeTodo(todoItem, index) {
-      this.$store.commit('removeOneItem', {...todoItem, index});
+      this.$store.commit("removeOneItem", { ...todoItem, index });
     },
     toggleComplete(todoItem, index) {
-      this.$store.commit('toggleOneItem', {...todoItem, index});
-    },
+      this.$store.commit("toggleOneItem", { ...todoItem, index });
+    }
   }
-}
+};
 </script>
 
 <style scoped>
@@ -78,7 +86,8 @@ li {
 }
 
 /* list item transition effect */
-.list-enter-active, .list-leave-active {
+.list-enter-active,
+.list-leave-active {
   transition: all 1s;
 }
 

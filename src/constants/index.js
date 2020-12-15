@@ -1,1 +1,1 @@
-export const KEY_PREFIX = 'todo-item-';
+export const KEY_PREFIX = "todo-item-";

@@ -19,24 +19,24 @@ const storage = {
       }
     }
     return _.sortBy(items, ["item"]);
-  },
+  }
 };
 
 export const store = new Vuex.Store({
   state: {
-    todoItems: storage.fetch(),
+    todoItems: storage.fetch()
   },
   getters: {
     getTodoItems(state) {
       return state.todoItems;
-    },
+    }
   },
   mutations: {
     addOneItem(state, todoItem) {
       const key = `${KEY_PREFIX}${todoItem}`;
       const newItemObj = {
         completed: false,
-        item: todoItem,
+        item: todoItem
       };
       localStorage.setItem(key, JSON.stringify(newItemObj));
       state.todoItems.push(newItemObj);
@@ -64,6 +64,6 @@ export const store = new Vuex.Store({
         }
       }
       state.todoItems = [];
-    },
-  },
+    }
+  }
 });
