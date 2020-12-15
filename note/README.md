@@ -15,3 +15,4 @@
 - [10. ES6 for Vue.js - Modules](./10-es6-modules.md)
 - [11. Vuex - 소개](./11-vuex-intro.md)
 - [12. Vuex 기술 요소](./12-vuex-technical-elements.md)
+- [13. Vuex - 헬퍼 함수](./13-helper-function.md)

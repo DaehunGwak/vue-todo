@@ -26,6 +26,11 @@ export const store = new Vuex.Store({
   state: {
     todoItems: storage.fetch(),
   },
+  getters: {
+    getTodoItems(state) {
+      return state.todoItems;
+    },
+  },
   mutations: {
     addOneItem(state, todoItem) {
       const key = `${KEY_PREFIX}${todoItem}`;
