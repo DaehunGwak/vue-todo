@@ -16,3 +16,4 @@
 - [11. Vuex - 소개](./11-vuex-intro.md)
 - [12. Vuex 기술 요소](./12-vuex-technical-elements.md)
 - [13. Vuex - 헬퍼 함수](./13-helper-function.md)
+- [14. Vuex - 프로젝트 구조화 및 모듈화](./14-vuex-strcture-module.md)
