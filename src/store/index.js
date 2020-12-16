@@ -27,7 +27,7 @@ export const store = new Vuex.Store({
     todoItems: storage.fetch()
   },
   getters: {
-    getTodoItems(state) {
+    storedTodoItems(state) {
       return state.todoItems;
     }
   },
