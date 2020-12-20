@@ -19,3 +19,4 @@ export const store = new Vuex.Store({
 
 ## 2. `modules` 속성 사용
 
+[example code](../src/store/modules/todoApp.js)
