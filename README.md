@@ -1,5 +1,7 @@
 # vue-todo
 
+[> go to demo](https://daehungwak.github.io/vue-todo/)
+
 ![image](https://user-images.githubusercontent.com/12469427/100546068-a3da1000-32a2-11eb-870e-fb5b6c9662f8.png)
 
 ## Vue.js 중급 강좌 - 웹앱 제작으로 배워보는 Vue.js, ES6, Vuex
